@@ -5,11 +5,14 @@ import jwt from 'jsonwebtoken';
 import config from '../../config';
 import { Cars } from '../cars/cars.model';
 
-
+interface IDecodedToken {
+  id: string;
+  role: string;
+}
 const createUserBookingIntoDB = async (payload: TBooking, token: string) => {
   try {
     // Verify and decode the token
-    const decoded: any = jwt.verify(token, config.JWT_ACCESS_SECRET as string);
+    const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET as string) as IDecodedToken;
 
     // Find the user by ID from the decoded token
     const user = await User.findById(decoded.id);
@@ -119,7 +122,7 @@ const getUserBookings = async (userId: string) => {
 const returnCar = async (_id: string, endTime: string, token: string): Promise<TBooking | null> => {
   try {
     // Verify and decode the token to check if the user is an admin
-    const decoded: any = jwt.verify(token, config.JWT_ACCESS_SECRET as string);
+    const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET as string) as IDecodedToken;
 
     // Find the booking by ID
     const booking = await Booking.findById(_id).populate('user', '_id name email role phone address')
@@ -171,7 +174,7 @@ const returnCar = async (_id: string, endTime: string, token: string): Promise<T
 
     return booking; // Return the updated booking object
   } catch (error) {
-    console.error('Error returning car:', error);
+    // console.error('Error returning car:', error);
     throw new Error('Error returning car');
   }
 };

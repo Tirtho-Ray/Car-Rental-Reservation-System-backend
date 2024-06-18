@@ -1,7 +1,7 @@
 import { TErrorSource } from "./interface/err";
 
 
-const handleDuplicateKeyError = (err: any) => {
+const handleDuplicateKeyError = (err:any) => {
 
     const duplicateValueMatch = err.message.match(/dup key: \{.*: "(.*)" \}/);
     const duplicateValue = duplicateValueMatch ? duplicateValueMatch[1] : "Unknown";
