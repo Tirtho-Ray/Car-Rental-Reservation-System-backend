@@ -12,11 +12,12 @@ The Car Rental Reservation System is a backend API designed to manage car rental
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **Mongoose**: A MongoDB object modeling tool designed to work in an asynchronous environment.
 - **JWT (jsonwebtoken)**: A compact, URL-safe means of representing claims to be transferred between two parties.
+- **JOD validation**.
 
 ## Features
 - **User Authentication**: Secure user login and registration using JWT.
 - **Car Management**: CRUD operations for managing car inventory.
-- **Reservation Management**: Create, read, update, and delete car reservations.
+- **Booking Management**: Create, read, update, and delete car reservations.
 - **User Roles**: Admin and user roles with different access levels.
 
 ## Installation
@@ -65,12 +66,12 @@ JWT_REFRESH_EXPIRES_IN=1y
 - **PUT /api/cars/:id**: Update a car by ID (Admin only).
 - **DELETE /api/cars/:id**: Delete a car by ID (Admin only).
 
-### Reservations
-- **GET /api/reservations**: Get all reservations (Admin only).
-- **POST /api/reservations**: Create a new reservation.
-- **GET /api/reservations/:id**: Get a reservation by ID.
-- **PUT /api/reservations/:id**: Update a reservation by ID.
-- **DELETE /api/reservations/:id**: Delete a reservation by ID.
+### Booking
+- **GET /api/booking**: Get all booking (Admin only).
+- **POST /api/booking**: Create a new booking.(user only)
+- **GeT /api/my-booking**: see user won a new booking.(user only)
+- **GET /api/bookings?carId=id&date=needDate**: Get a booking by ID. (Admin only)
+- **PATCH /api/cars/return**: Update a reservation by ID.
 
 ## License
 
@@ -78,7 +79,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
+Contributions are welcome! Please Open an issue or submit a pull requeSt for any changes.
 
 ## Acknowledgements
 
