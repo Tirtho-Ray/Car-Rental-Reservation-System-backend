@@ -49,7 +49,7 @@ JWT_REFRESH_EXPIRES_IN=1y
 
 5. Start the server:
     ```bash
-    npm run dev
+    npm run start:Server
     ```
 
 ## API Endpoints
